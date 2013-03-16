@@ -42,7 +42,7 @@ def SVD(X):
 
     return U, V, d
 
-def biplot(X,alpha=1,arrow_labels=None):
+def biplot(X,alpha=1,point_labels=None,arrow_labels=None):
     """
     Parameters:
     ===========
@@ -64,6 +64,10 @@ def biplot(X,alpha=1,arrow_labels=None):
             H_label=str(var_idx)
         plt.arrow(0,0,H_row[0],H_row[1],label=H_label)
 
+    if point_labels is not None:
+        for var_idx, G_row in enumerate(G):
+            plt.annotate(point_labels[var_idx],xy=G_row)
+        
 
     plt.legend()
         

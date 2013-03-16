@@ -42,7 +42,24 @@ def SVD(X):
 
     return U, V, d
 
-
+def biplot(X,alpha=1):
+    """
+    Parameters:
+    ===========
+    X: numpy.ndarray[ndim=2]
+        Data matrix, assumption is that rows correspond to observations
+        columns correspond to variables, PCA will be done on the
+        matrix  1/(n-1) * <(X - mu), (X - mu)>
+    
+    """
+    U, V, d = SVD(X)
+    G = U[:,:2] * d[:2]**alpha
+    H = V[:,:2] * d[:2]**(1-alpha)
+    plt.scatter(G[:,0],G[:,1])
+    for var_idx, H_row in enumerate(H):
+        plt.arrow(0,0,H_row[0],H_row[1])
+        
+    plt.show()
 
 def PCA(X,num_pcs=-1):
     """

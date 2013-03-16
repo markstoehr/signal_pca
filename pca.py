@@ -59,7 +59,7 @@ def biplot(X,alpha=1,arrow_labels=None):
     for var_idx, H_row in enumerate(H):
         if arrow_labels is not None:
             H_label=arrow_labels[var_idx]
-            plt.annotate(label,xy=H_row)
+            plt.annotate(H_label,xy=H_row)
         else:
             H_label=str(var_idx)
         plt.arrow(0,0,H_row[0],H_row[1],label=H_label)

@@ -69,7 +69,7 @@ def biplot(X,alpha=1,point_labels=None,arrow_labels=None):
             plt.annotate(point_labels[var_idx],xy=G_row)
         
 
-    plt.legend()
+
         
     
     plt.show()

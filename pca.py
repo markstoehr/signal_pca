@@ -34,7 +34,7 @@ def SVD(X):
     else:
         w,v = np.linalg.eigh(np.dot(Y,Y.T))
         sort_idx = np.argsort(w)[::-1][:n]
-        U,d= np.dot(Y.T,v.T[sort_idx].T), np.sqrt(w[sort_idx])
+        U,d= v.T[sort_idx].T, np.sqrt(w[sort_idx])
         V = np.dot(Y.T,U) / d
 
     # correct for the fact that we divided by np.sqrt(n)

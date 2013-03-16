@@ -42,7 +42,7 @@ def SVD(X):
 
     return U, V, d
 
-def biplot(X,alpha=1):
+def biplot(X,alpha=1,arrow_labels=None):
     """
     Parameters:
     ===========
@@ -57,8 +57,17 @@ def biplot(X,alpha=1):
     H = V[:,:2] * d[:2]**(1-alpha)
     plt.scatter(G[:,0],G[:,1])
     for var_idx, H_row in enumerate(H):
-        plt.arrow(0,0,H_row[0],H_row[1])
+        if arrow_labels is not None:
+            H_label=arrow_labels[var_idx]
+            plt.annotate(label,xy=H_row)
+        else:
+            H_label=str(var_idx)
+        plt.arrow(0,0,H_row[0],H_row[1],label=H_label)
+
+
+    plt.legend()
         
+    
     plt.show()
 
 def PCA(X,num_pcs=-1):
